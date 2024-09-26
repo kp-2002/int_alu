@@ -1,4 +1,6 @@
 module int_mult #(parameter DATA_WIDTH=32) (
+	input                       clk,
+	input                       rst_n,
 	input      [DATA_WIDTH-1:0] m_plier,
 	input      [DATA_WIDTH-1:0] m_cand,
 	output reg [DATA_WIDTH-1:0] result
@@ -13,6 +15,8 @@ module int_mult #(parameter DATA_WIDTH=32) (
 	generate
 		for(j=0;j<(DATA_WIDTH/2);j=j+2) begin
 			int_adder i_int_adder(
+				.clk(clk),
+				.rst_n(rst_n),
 				.data_a(m_cand & m_plier[j]),
 				.data_b(m_cand & m_plier[j+1]),
 				.result(result_intmd[j][0]));
@@ -23,6 +27,8 @@ module int_mult #(parameter DATA_WIDTH=32) (
 		for(i=1;i<NUM_STAGES;i=i+1) begin
 			for(j=0;j<(DATA_WIDTH/(2**i));j=j+2) begin
 				int_adder i_int_adder(
+					.clk(clk),
+					.rst_n(rst_n),
 					.data_a(result_intmd[j][i-1]),
 					.data_b(result_intmd[j+1][i-1]),
 					.result(result_intmd[j][i]));
