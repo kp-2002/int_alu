@@ -19,24 +19,17 @@ module int_adder #(parameter DATA_WIDTH=32)
 	);
 
 	wire [DATA_WIDTH-1:0] sum_t;
-	wire [DATA_WIDTH  :0] carry_intrnl;
 	wire                  carry_out_t;
 
 	assign carry_intrnl[0] = 1'b0;
 	assign carry_out_t     = carry_intrnl[DATA_WIDTH];
 
-	genvar i;
-
-	generate
-		for(i=0;i<DATA_WIDTH;i=i+1) begin
-			fa i_fa(
-				.a(data_a[i]),
-				.b(data_b[i]),
-				.carry_in(carry_intrnl[i]),
-				.sum(sum_t[i]),
-				.carry_out(carry_intrnl[i+1]));
-		end
-	endgenerate
+	int_adder_comb i_int_adder_comb(
+		.data_a(data_a),
+		.data_b(data_b),
+		.carry_in(carry_in),
+		.sum(sum_t),
+		.carry_out(carry_out_t));
 
 	always @(posedge clk or negedge rst_n) begin
 		if(~rst_n) begin
