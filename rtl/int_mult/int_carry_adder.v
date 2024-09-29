@@ -1,6 +1,6 @@
 module int_carry_adder #(parameter DATA_WIDTH=32)
 	//data width of the adder
-       (input      [DATA_WIDTH-1:0] data_a,
+       (input      [DATA_WIDTH-1:0] data_in,
 	//data port
 	input                       carry_in,
 	//carry in
@@ -17,7 +17,7 @@ module int_carry_adder #(parameter DATA_WIDTH=32)
 	generate
 		for(i=0;i<DATA_WIDTH;i=i+1) begin
 			ha i_ha(
-				.a(data_a[i]),
+				.a(data_in[i]),
 				.carry_in(carry_intrnl[i]),
 				.sum(sum[i]),
 				.carry_out(carry_intrnl[i+1]));

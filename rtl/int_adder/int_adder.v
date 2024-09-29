@@ -24,8 +24,8 @@ module int_adder #(parameter DATA_WIDTH=32)
 	assign carry_intrnl[0] = 1'b0;
 	assign carry_out_t     = carry_intrnl[DATA_WIDTH];
 
-	int_adder_comb i_int_adder_comb(
-		.data_a(data_a),
+	int_adder_comb i_int_adder_comb #(.DATA_WIDTH(DATA_WIDTH))
+	       (.data_a(data_a),
 		.data_b(data_b),
 		.carry_in(carry_in),
 		.sum(sum_t),

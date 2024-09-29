@@ -1,4 +1,4 @@
-module int_carry_adder #(parameter DATA_WIDTH=32)
+module int_adder_comb #(parameter DATA_WIDTH=32)
 	//data width of the adder
        (input      [DATA_WIDTH-1:0] data_a,
 	//data port
