@@ -1,7 +1,7 @@
 module int_mult_stage_adder #(
 	parameter         DATA_WIDTH = 32,
 	//data width of the adder
-	parameter          STAGE_NUM = 0,
+	parameter          STAGE_NUM = 1,
 	//the stage of the multiplier the adder is used in
 	parameter  INPUT_CARRY_WIDTH = 2**(STAGE_NUM),
 	//the data width of the input carries fed to the adder
