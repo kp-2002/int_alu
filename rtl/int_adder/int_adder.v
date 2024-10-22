@@ -21,10 +21,8 @@ module int_adder #(parameter DATA_WIDTH=32)
 	wire [DATA_WIDTH-1:0] sum_t;
 	wire                  carry_out_t;
 
-	assign carry_intrnl[0] = 1'b0;
-	assign carry_out_t     = carry_intrnl[DATA_WIDTH];
-
-	int_adder_comb i_int_adder_comb #(.DATA_WIDTH(DATA_WIDTH))
+	int_adder_comb #(.DATA_WIDTH(DATA_WIDTH)) 
+		i_int_adder_comb 
 	       (.data_a(data_a),
 		.data_b(data_b),
 		.carry_in(carry_in),
