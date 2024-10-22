@@ -27,7 +27,7 @@ module int_adder_comb #(parameter DATA_WIDTH=32)
 		end
 	endgenerate
 
-	assign carry_intrnl[0] = 1'b0;
+	assign carry_intrnl[0] = carry_in;
 	assign carry_out       = carry_intrnl[DATA_WIDTH];
 
 endmodule
