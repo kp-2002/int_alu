@@ -17,7 +17,7 @@ module int_adder_comb #(parameter DATA_WIDTH=32)
 	genvar i;
 
 	generate
-		for(i=0;i<DATA_WIDTH;i=i+1) begin :gensum
+		for(i=0;i<DATA_WIDTH;i=i+1) begin : gensum
 			fa i_fa(
 				.a(data_a[i]),
 				.b(data_b[i]),
