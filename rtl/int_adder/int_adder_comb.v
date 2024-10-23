@@ -12,6 +12,8 @@ module int_adder_comb #(parameter DATA_WIDTH=32)
 	//carry out
 	);
 
+	`ifdef RIPPLE_CARRY
+	
 	wire [DATA_WIDTH  :0] carry_intrnl;
 
 	genvar i;
@@ -29,5 +31,16 @@ module int_adder_comb #(parameter DATA_WIDTH=32)
 
 	assign carry_intrnl[0] = carry_in;
 	assign carry_out       = carry_intrnl[DATA_WIDTH];
+
+	`elsif CARRY_SELECT
+
+	`elsif CARRY_LOOKAHEAD
+
+	`elsif BRENT_KUNG
+
+	`elsif KOGGE_STONE
+
+	`endif
+	
 
 endmodule
